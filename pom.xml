@@ -38,6 +38,13 @@
 		</dependency>
 		<!--jdbc done-->
 
+		<!--为项目整合Actuator-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!--为项目整合Actuator end-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
