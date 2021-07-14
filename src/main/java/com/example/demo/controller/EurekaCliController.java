@@ -23,6 +23,8 @@ public class EurekaCliController {
 
     @GetMapping("/eureka/client")
     public List<String> getEurekaServices(){
+        //显然这里通过组件绑定了相应的接口，形成直接调用，
+        //多种组件的情况下就需要考虑profile或者enable来配置自动装载
         List<String> list = discoveryClient.getServices();
         System.out.println("------------------------------------");
         if (list != null && list.size() > 0) {
