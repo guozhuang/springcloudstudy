@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.bean.User;
+import com.example.demo.bean.UserUri;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,7 +61,7 @@ public class EurekaCliController {
 
     //通过eureka调用具体逻辑
     @GetMapping("/eureka/user")
-    public User getUserInfo(){
+    public UserUri getUserInfo(){
         String serviceId = "micr-service-user";
         List<ServiceInstance> list = discoveryClient.getInstances(serviceId);
         System.out.println("------------------------------------");
@@ -73,7 +74,10 @@ public class EurekaCliController {
                     + "/1";
 
             System.out.println(url);
-            return this.restTemplate.getForObject(url, User.class);
+            UserUri userUri = this.restTemplate.getForObject(url, UserUri.class);
+            userUri.setUri(url);
+
+            return userUri;
         }
 
         return null;
